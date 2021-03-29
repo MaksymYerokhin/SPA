@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ThreeScene } from '../app/three-sample/three-sample.component';
+import { ThreeScene } from '../app/models/ThreeScene';
 import { ThreeDataService } from './three-data.service';
 
 @Injectable({
@@ -29,6 +29,7 @@ export class ChangeTrackerService {
     }, period);
   }
 
+  // TODO: can be moved to component if we want to reuse this service
   ngOnDestroy() {
     if (this.timerId)
       clearInterval(this.timerId);

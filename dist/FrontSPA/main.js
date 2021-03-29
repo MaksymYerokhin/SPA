@@ -40,6 +40,22 @@ const environment = {
 
 /***/ }),
 
+/***/ "DRmR":
+/*!**************************************!*\
+  !*** ./src/app/models/ThreeScene.ts ***!
+  \**************************************/
+/*! exports provided: ThreeScene */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThreeScene", function() { return ThreeScene; });
+class ThreeScene {
+}
+
+
+/***/ }),
+
 /***/ "Sy1n":
 /*!**********************************!*\
   !*** ./src/app/app.component.ts ***!
@@ -118,12 +134,11 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjector
 /*!********************************************************!*\
   !*** ./src/app/three-sample/three-sample.component.ts ***!
   \********************************************************/
-/*! exports provided: ThreeScene, ThreeSampleComponent */
+/*! exports provided: ThreeSampleComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThreeScene", function() { return ThreeScene; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThreeSampleComponent", function() { return ThreeSampleComponent; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "Womt");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
@@ -134,24 +149,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const _c0 = ["rendererContainer"];
-class ThreeScene {
-    constructor() {
-        this.renderer = null;
-        this.scene = null;
-        this.camera = null;
-        this.currentStateJsonString = null;
-        this.controls = null;
-    }
-}
 class ThreeSampleComponent {
-    //redBoxes = []
-    //gltf = null;
-    //mixer = null;
-    //clock = new THREE.Clock();
     constructor(initializer, changeTrackerService) {
         this.initializer = initializer;
         this.changeTrackerService = changeTrackerService;
-        this.threeScene = null;
     }
     ngOnInit() {
         this.initializer.InitializeScene().then((threeScene) => {
@@ -160,14 +161,6 @@ class ThreeSampleComponent {
             this.animate();
             this.changeTrackerService.start(this.threeScene, 10000);
         });
-        // Controls
-        //this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-        //this.controls.enableDamping = true;
-        //this.controls.dampingFactor = 0.05;
-        //this.controls.screenSpacePanning = false;
-        //this.controls.minDistance = 100;
-        //this.controls.maxDistance = 500;
-        //this.controls.maxPolarAngle = Math.PI / 2;
         let clickHandler = this.onDocumentKeyDown.bind(this);
         document.addEventListener('keydown', clickHandler, false);
     }
@@ -200,7 +193,6 @@ class ThreeSampleComponent {
     animate() {
         window.requestAnimationFrame(() => this.animate());
         //this.controls.update();
-        //this.moveRedBoxes();
         this.threeScene.renderer.render(this.threeScene.scene, this.threeScene.camera);
     }
 }
@@ -229,7 +221,7 @@ ThreeSampleComponent.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵde
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SceneCameraInitializeService", function() { return SceneCameraInitializeService; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "Womt");
-/* harmony import */ var _app_three_sample_three_sample_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../app/three-sample/three-sample.component */ "iK86");
+/* harmony import */ var _app_models_ThreeScene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../app/models/ThreeScene */ "DRmR");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _three_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./three-data.service */ "qfve");
 
@@ -239,14 +231,15 @@ __webpack_require__.r(__webpack_exports__);
 class SceneCameraInitializeService {
     constructor(threeDataService) {
         this.threeDataService = threeDataService;
-        this.threeScene = new _app_three_sample_three_sample_component__WEBPACK_IMPORTED_MODULE_1__["ThreeScene"]();
+        this.threeScene = new _app_models_ThreeScene__WEBPACK_IMPORTED_MODULE_1__["ThreeScene"]();
         this.boxColors = [0x81106B, 0xF2B727, 0xB8E1E9, 0x7A0202];
     }
+    // TODO: move to factory
     InitializeScene() {
         return new Promise((resolve, _) => {
             this.threeDataService.get().then((res) => {
                 if (!!res.data) {
-                    const model = JSON.parse(res.data);
+                    const model = res.data;
                     this.threeScene.scene = new three__WEBPACK_IMPORTED_MODULE_0__["ObjectLoader"]().parse(model.sceneState);
                 }
                 else {
@@ -302,7 +295,7 @@ class SceneCameraInitializeService {
                 }
                 else {
                     this.threeScene.currentStateJsonString = res.data;
-                    const model = JSON.parse(res.data);
+                    const model = res.data;
                     this.threeScene.camera.matrix.fromArray(model.cameraState);
                     this.threeScene.camera.matrix.decompose(this.threeScene.camera.position, this.threeScene.camera.quaternion, this.threeScene.camera.scale);
                 }
@@ -340,7 +333,7 @@ class ThreeDataService {
         return this.http.get('api/').toPromise();
     }
     save(data) {
-        this.http.post('api/save', { data: JSON.stringify(data) }).subscribe((error) => console.log(error));
+        this.http.post('api/save', { data: data }).subscribe((error) => console.log(error));
     }
 }
 ThreeDataService.ɵfac = function ThreeDataService_Factory(t) { return new (t || ThreeDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
@@ -408,6 +401,7 @@ class ChangeTrackerService {
             }
         }, period);
     }
+    // TODO: can be moved to component if we want to reuse this service
     ngOnDestroy() {
         if (this.timerId)
             clearInterval(this.timerId);

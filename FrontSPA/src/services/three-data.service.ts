@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-//import { Observable } from 'rxjs';
-
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -14,6 +12,6 @@ export class ThreeDataService {
   }
 
   public save(data) {
-    this.http.post('api/save', { data: JSON.stringify(data) }).subscribe((error) => console.log(error));
+    this.http.post('api/save', { data: data }).subscribe((error) => console.log(error));
   }
 }

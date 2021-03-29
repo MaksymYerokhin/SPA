@@ -1,23 +1,19 @@
 'use strict';
 
 const express = require('express');
-const cors = require('cors');
-const mongodb = require('mongodb')
-//const assert = require('assert');
+const mongodb = require('mongodb');
 const app = express();
 const bodyParser = require("body-parser");
-const dbName = 'spa';
-const url = 'mongodb://localhost:27017';
-const collectionname = 'models';
+var DbService = require('./SceneRepository');
 
-const MongoClient = mongodb.MongoClient;
-var DbService = require('./SceneRepository')
+// TODO: move to config, create for staging, test and prod
+const url = 'mongodb://localhost:27017';
 
 app.use('/', express.static('dist/FrontSPA'))
 app.use(bodyParser.json({ limit: '50mb' }));
 
 app.post('/api/save', (req, res) => {
-    DbService.saveScene(req.body.data, (result) => res.send());
+    DbService.saveScene(req.body.data, (_) => res.send());
 });
 
 app.get('/api', function (req, res) {

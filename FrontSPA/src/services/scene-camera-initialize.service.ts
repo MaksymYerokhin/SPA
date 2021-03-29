@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import * as THREE from 'three';
-import { ThreeScene } from '../app/three-sample/three-sample.component';
+import { ThreeScene } from '../app/models/ThreeScene';
 import { ThreeDataService } from './three-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SceneCameraInitializeService {
-  constructor(private threeDataService: ThreeDataService) { }
+  constructor(private threeDataService: ThreeDataService) {  }
 
   private threeScene: ThreeScene = new ThreeScene();
   private boxColors = [0x81106B, 0xF2B727, 0xB8E1E9, 0x7A0202];
 
+  // TODO: move to factory
   public InitializeScene() {
     return new Promise((resolve, _) => {
       this.threeDataService.get().then((res: any) => {
         if (!!res.data) {
-          const model = JSON.parse(res.data);
+          const model = res.data;
           this.threeScene.scene = new THREE.ObjectLoader().parse(model.sceneState);
         }
         else {
@@ -82,7 +83,7 @@ export class SceneCameraInitializeService {
         else {
           this.threeScene.currentStateJsonString = res.data;
 
-          const model = JSON.parse(res.data);
+          const model = res.data;
           this.threeScene.camera.matrix.fromArray(model.cameraState);
           this.threeScene.camera.matrix.decompose(this.threeScene.camera.position, this.threeScene.camera.quaternion, this.threeScene.camera.scale);
         }

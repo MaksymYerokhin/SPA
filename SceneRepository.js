@@ -4,14 +4,15 @@ const MongoClient = mongodb.MongoClient;
 const dbName = 'spa';
 const url = 'mongodb://localhost:27017';
 const collectionname = 'models';
-const defaultId = 1;
+const clientId = 1;
 
+// TODO get _id from session
 const getScene = (callback) => {
     const client = new MongoClient(url);
 
     client.connect((_) => {
         const db = client.db(dbName),
-            query = { _id: defaultId },
+            query = { _id: clientId },
             includeFields = { geoData: 1 },
             collection = db.collection(collectionname);
 
@@ -25,13 +26,14 @@ const getScene = (callback) => {
     });
 }
 
+// TODO get _id from session
 const saveScene = (data, callback) => {
     const client = new MongoClient(url);
 
     client.connect((_) => {
         const db = client.db(dbName),
             collection = db.collection(collectionname),
-            query = { _id: 1 },
+            query = { _id: clientId },
             update = { $set: { geoData: data } },
             options = { upsert: true };
 

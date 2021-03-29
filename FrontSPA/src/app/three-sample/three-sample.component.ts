@@ -1,23 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as THREE from 'three';
-//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-//import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
-//import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls';
-//import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-//import { OrbitControls } from 'three-orbitcontrols-ts'
-//import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Injectable } from '@angular/core';
 import { SceneCameraInitializeService } from '../../services/scene-camera-initialize.service';
 import { ChangeTrackerService } from '../../services/change-tracker.service';
-
-export class ThreeScene {
-  renderer: THREE.WebGLRenderer = null;
-  scene: THREE.Scene = null;
-  camera: THREE.PerspectiveCamera = null;
-  currentStateJsonString: string = null;
-  controls = null;
-}
+import { ThreeScene } from '../models/ThreeScene';
 
 @Component({
   selector: 'app-three-sample',
@@ -29,12 +15,7 @@ export class ThreeSampleComponent implements OnInit {
 
   @ViewChild('rendererContainer') rendererContainer: ElementRef;
 
-  threeScene: ThreeScene = null;
-  
-  //redBoxes = []
-  //gltf = null;
-  //mixer = null;
-  //clock = new THREE.Clock();
+  private threeScene: ThreeScene;
 
   constructor(private initializer: SceneCameraInitializeService, private changeTrackerService: ChangeTrackerService) { }
 
@@ -45,15 +26,6 @@ export class ThreeSampleComponent implements OnInit {
       this.animate();
       this.changeTrackerService.start(this.threeScene, 10000);
     });
-
-    // Controls
-      //this.controls = new OrbitControls(this.camera, this.renderer.domElement)
-      //this.controls.enableDamping = true;
-      //this.controls.dampingFactor = 0.05;
-      //this.controls.screenSpacePanning = false;
-      //this.controls.minDistance = 100;
-      //this.controls.maxDistance = 500;
-      //this.controls.maxPolarAngle = Math.PI / 2;
     
     let clickHandler = this.onDocumentKeyDown.bind(this)
     document.addEventListener('keydown', clickHandler, false);
@@ -93,11 +65,6 @@ export class ThreeSampleComponent implements OnInit {
   private animate() {
     window.requestAnimationFrame(() => this.animate());
     //this.controls.update();
-    //this.moveRedBoxes();
     this.threeScene.renderer.render(this.threeScene.scene, this.threeScene.camera);
   }
-
-  //moveRedBoxes() {
-  //  this.redBoxes.forEach(x => x.position.z += 20)
-  //}
 }
