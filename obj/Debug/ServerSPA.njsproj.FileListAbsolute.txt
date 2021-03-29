@@ -1,0 +1,3 @@
+C:\Users\mayer\source\repos\ServerSPA\obj\Debug\ServerSPA.njsprojAssemblyReference.cache
+C:\Users\mayer\source\repos\ServerSPA\obj\Debug\ServerSPA.njsproj.CoreCompileInputs.cache
+C:\Users\mayer\source\repos\ServerSPA\bin\Microsoft.NodejsTools.WebRole.dll

@@ -1,0 +1,109 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>ServerSPA</Name>
+    <RootNamespace>ServerSPA</RootNamespace>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>663f256c-c087-4052-a4ea-50687506a9da</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>server.js</StartupFile>
+    <StartWebBrowser>False</StartWebBrowser>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <StartWebBrowser>false</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="dist\FrontSPA\favicon.ico" />
+    <Content Include="dist\FrontSPA\index.html" />
+    <Content Include="dist\FrontSPA\main.js" />
+    <Content Include="dist\FrontSPA\main.js.map" />
+    <Content Include="dist\FrontSPA\polyfills.js" />
+    <Content Include="dist\FrontSPA\polyfills.js.map" />
+    <Content Include="dist\FrontSPA\runtime.js" />
+    <Content Include="dist\FrontSPA\runtime.js.map" />
+    <Content Include="dist\FrontSPA\styles.css" />
+    <Content Include="dist\FrontSPA\styles.css.map" />
+    <Content Include="dist\FrontSPA\vendor.js" />
+    <Content Include="dist\FrontSPA\vendor.js.map" />
+    <Content Include="FrontSPA\.browserslistrc" />
+    <Content Include="FrontSPA\.editorconfig" />
+    <Content Include="FrontSPA\.gitignore" />
+    <Content Include="FrontSPA\angular.json" />
+    <Content Include="FrontSPA\e2e\protractor.conf.js" />
+    <Content Include="FrontSPA\e2e\tsconfig.json" />
+    <Content Include="FrontSPA\karma.conf.js" />
+    <Content Include="FrontSPA\package-lock.json" />
+    <Content Include="FrontSPA\package.json" />
+    <Content Include="FrontSPA\proxy.conf.json" />
+    <Content Include="FrontSPA\README.md" />
+    <Content Include="FrontSPA\src\app\app.component.css" />
+    <Content Include="FrontSPA\src\app\app.component.html" />
+    <Content Include="FrontSPA\src\app\three-sample\three-sample.component.css" />
+    <Content Include="FrontSPA\src\app\three-sample\three-sample.component.html" />
+    <Content Include="FrontSPA\src\assets\.gitkeep" />
+    <Content Include="FrontSPA\src\favicon.ico" />
+    <Content Include="FrontSPA\src\index.html" />
+    <Content Include="FrontSPA\src\styles.css" />
+    <Content Include="FrontSPA\tsconfig.app.json" />
+    <Content Include="FrontSPA\tsconfig.json" />
+    <Content Include="FrontSPA\tsconfig.spec.json" />
+    <Content Include="FrontSPA\tslint.json" />
+    <Content Include="server.js" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="SceneRepository.js">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dist\" />
+    <Folder Include="dist\FrontSPA\" />
+    <Folder Include="FrontSPA\" />
+    <Folder Include="FrontSPA\e2e\" />
+    <Folder Include="FrontSPA\e2e\src\" />
+    <Folder Include="FrontSPA\src\" />
+    <Folder Include="FrontSPA\src\app\" />
+    <Folder Include="FrontSPA\src\app\three-sample\" />
+    <Folder Include="FrontSPA\src\assets\" />
+    <Folder Include="FrontSPA\src\environments\" />
+    <Folder Include="FrontSPA\src\services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="FrontSPA\e2e\src\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="FrontSPA\e2e\src\app.po.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\app\app.component.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\app\app.module.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\app\three-sample\three-sample.component.spec.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\app\three-sample\three-sample.component.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\environments\environment.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\services\scene-camera-initialize.service.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="FrontSPA\src\main.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\polyfills.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\services\three-data.service.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\test.ts" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
+</Project>

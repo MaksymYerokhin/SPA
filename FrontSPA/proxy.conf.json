@@ -1,0 +1,10 @@
+{
+  "/save": {
+    "target": "http://localhost:3000",
+    "secure": true,
+    "pathRewrite": {
+      "^/save": ""
+    },
+    "changeOrigin": true
+  }
+}
