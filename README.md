@@ -9,6 +9,8 @@ NodeJS & MongoDB installed
 
  - node server.js
  
+ - npm test (if needed, simple one)
+ 
 ## Features
 - Moving around with arrows
 - Initially database is empty, we generate scene on Frontent
