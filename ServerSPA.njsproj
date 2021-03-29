@@ -97,6 +97,9 @@
     <TypeScriptCompile Include="FrontSPA\src\app\three-sample\three-sample.component.ts" />
     <TypeScriptCompile Include="FrontSPA\src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="FrontSPA\src\environments\environment.ts" />
+    <TypeScriptCompile Include="FrontSPA\src\services\change-tracker.service.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="FrontSPA\src\services\scene-camera-initialize.service.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

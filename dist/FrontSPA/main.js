@@ -192,7 +192,6 @@ class ThreeSampleComponent {
     }
     animate() {
         window.requestAnimationFrame(() => this.animate());
-        //this.controls.update();
         this.threeScene.renderer.render(this.threeScene.scene, this.threeScene.camera);
     }
 }
@@ -330,10 +329,10 @@ class ThreeDataService {
         this.http = http;
     }
     get() {
-        return this.http.get('api/').toPromise();
+        return this.http.get('api/scene').toPromise();
     }
     save(data) {
-        this.http.post('api/save', { data: data }).subscribe((error) => console.log(error));
+        this.http.post('api/scene', { data: data }).subscribe((error) => console.log(error));
     }
 }
 ThreeDataService.ɵfac = function ThreeDataService_Factory(t) { return new (t || ThreeDataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };

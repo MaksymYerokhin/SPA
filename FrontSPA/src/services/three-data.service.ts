@@ -8,10 +8,10 @@ export class ThreeDataService {
   constructor(private http: HttpClient) {  }
 
   public get() {
-    return this.http.get('api/').toPromise();
+    return this.http.get('api/scene').toPromise();
   }
 
   public save(data) {
-    this.http.post('api/save', { data: data }).subscribe((error) => console.log(error));
+    this.http.post('api/scene', { data: data }).subscribe((error) => console.log(error));
   }
 }

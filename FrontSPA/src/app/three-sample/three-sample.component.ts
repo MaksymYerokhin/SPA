@@ -64,7 +64,6 @@ export class ThreeSampleComponent implements OnInit {
 
   private animate() {
     window.requestAnimationFrame(() => this.animate());
-    //this.controls.update();
     this.threeScene.renderer.render(this.threeScene.scene, this.threeScene.camera);
   }
 }
